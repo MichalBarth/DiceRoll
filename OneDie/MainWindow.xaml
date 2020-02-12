@@ -1,0 +1,32 @@
+﻿<Window x:Class="OneDie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:OneDie.ViewModels"
+        xmlns:local="clr-namespace:OneDie"
+        mc:Ignorable="d"
+        Title="Roll em'" Height="300" Width="400" MinHeight="300" MinWidth="400">
+    <Window.DataContext>
+        <viewmodel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="72"/>
+            <RowDefinition Height="72"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" Margin="10" TextWrapping="Wrap" FontSize="48" VerticalAlignment="Center"/>
+        <Button Content="Button" HorizontalAlignment="center" Margin="10" Grid.Row="1" VerticalAlignment="Center" Width="100" Command="{Binding Roll}"/>
+        
+        <StackPanel HorizontalAlignment="Stretch" Margin="10" Grid.Row="2" VerticalAlignment="Stretch" Orientation="Horizontal">
+            <Button Content="D4" Width="72" Command="{Binding SetMax}" CommandParameter="4"/>
+            <Button Content="D6" Width="72" Command="{Binding SetMax}" CommandParameter="6"/>
+            <Button Content="D10" Width="72" Command="{Binding SetMax}" CommandParameter="10"/>
+            <Button Content="D16" Width="72" Command="{Binding SetMax}" CommandParameter="16"/>
+            <TextBlock Margin="10" TextWrapping="Wrap" Text="{Binding Max}" VerticalAlignment="Center"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
